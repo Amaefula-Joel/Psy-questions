@@ -56,6 +56,38 @@
         })
 
         showField(fieldIndex);
+
+
+        let testArr = [
+            ['red', 'red', 'red'],
+            ['blue', 'blue', 'blue'],
+            ['green', 'green', 'green']
+        ]
+
+        let myArr = ['blue', 'blue', 'blue'];
+
+        function arraysAreEqual(arr1, arr2) {
+            if (arr1.length !== arr2.length) {
+                return false;
+            }
+            
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] !== arr2[i]) {
+                    return false;
+                }
+            }
+        
+            return true;
+        }
+
+        let allItemsMatch = testArr.some((arr, index) => {
+            if (arraysAreEqual(arr, myArr)) {
+                console.log(index);
+            }
+        });
+
+    console.log(allItemsMatch); 
+
     </script>
 </body>
 </html>

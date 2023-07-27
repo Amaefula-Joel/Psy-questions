@@ -23,9 +23,9 @@
             padding: 20px;
         }
 
-        .form-step{
+        .form-step, .summary{
             margin: auto;
-            max-width: 500px;
+            max-width: 600px;
         }
 
         .form-title{
@@ -33,18 +33,20 @@
         }
 
         .form-step ul{
-            display: flex;
-            justify-content: center;
             list-style-type: none;
             margin-bottom: 20px;
             gap: 10px;
+        }
+
+        .form-step ul li{
+            margin-bottom: 10px;
         }
 
         .form-step ul label{
             display: inline-block;
             border: 2px solid rgb(150, 150, 150);
             padding: 10px;
-            min-width: 110px;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             gap: 10px;
@@ -62,6 +64,15 @@
             padding: 8px 20px;
             font-size: 16px;
 
+        }
+
+        .summary{
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .summary h2{
+            margin-bottom: 20px;
         }
     </style>
 
@@ -91,8 +102,9 @@
                 <button @click="nextQuestion">Next</button>
             </div>
         </div>
-        <div v-else>
+        <div v-else class="summary">
             <h2>Thank you for completing the questionnaire!</h2>
+            <p>Based on the answer you picked, you're advised to be a <b>{{ printedSuggestion }}</b></p>
         </div>
 
     </div>
