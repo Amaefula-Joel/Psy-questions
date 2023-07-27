@@ -35,9 +35,6 @@ const app = new Vue({
         },
         selectOption(index, item) {
             this.questions[index].selectOption = item;
-        },
-        testing(index) {
-            console.log(this.questions[index].selectOption);
         }
     }
 });

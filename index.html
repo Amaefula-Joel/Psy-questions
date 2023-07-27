@@ -2,30 +2,94 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionnaire</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open sans', Arial, sans-serif;
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        .container{
+            padding: 20px;
+        }
+
+        .form-step{
+            margin: auto;
+            max-width: 500px;
+        }
+
+        .form-title{
+            margin-bottom: 30px;
+        }
+
+        .form-step ul{
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .form-step ul label{
+            display: inline-block;
+            border: 2px solid rgb(150, 150, 150);
+            padding: 10px;
+            min-width: 110px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .form-step ul label.chosen{
+            background-color: rgb(210, 210, 243);
+        }
+
+        .button-con{
+            text-align: center;
+        }
+
+        .button-con button{
+            padding: 8px 20px;
+            font-size: 16px;
+
+        }
+    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
 
 <body>
     <div id="app">
-        <div v-if="currentQuestionIndex < questions.length">
+        <div class="container" v-if="currentQuestionIndex < questions.length">
 
-            <div v-for="(question, index) in questions" :key="question.name">
+            <div class="form-step" v-for="(question, index) in questions" :key="question.name">
                 <div v-if="currentQuestionIndex === index">
-                    <h2>{{ question.text }}</h2>
+                    <h2 class="form-title">{{ question.text }}</h2>
     
                     <ul>
                         <li v-for="(item, ind) in question.options" :key="item">
-                            <label>
+                            <label :class="{chosen : question.selectedOption === item}">
                                 {{ item }} 
-                                <input type="radio" :value="item" :name="question.name" v-model="question.selectedOption" @click=" selectOption(index, item), testing(index, item)">
+                                <input type="radio" :value="item" :name="question.name" v-model="question.selectedOption" @click=" selectOption(index, item)">
                             </label>
                         </li>
                     </ul>
                 </div>
             </div>
             
-            <button @click="nextQuestion">Next</button>
+            <div class="button-con">
+                <button @click="nextQuestion">Next</button>
+            </div>
         </div>
         <div v-else>
             <h2>Thank you for completing the questionnaire!</h2>
