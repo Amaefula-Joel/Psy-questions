@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Psychological Test Questionnaire</title>
+</head>
+<body>
+    <h1>Psychological Test Questionnaire</h1>
+    <form id="questionnaireForm">
+        <fieldset>
+            <legend>Question 1:</legend>
+            <p>How do you handle stress?</p>
+            <input type="radio" name="question1" value="option1" required>Option 1<br>
+            <input type="radio" name="question1" value="option2">Option 2<br>
+            <input type="radio" name="question1" value="option3">Option 3<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Question 2:</legend>
+            <p>How do you express your emotions?</p>
+            <input type="radio" name="question2" value="option1" required>Option 1<br>
+            <input type="radio" name="question2" value="option2">Option 2<br>
+            <input type="radio" name="question2" value="option3">Option 3<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Question 3:</legend>
+            <p>How do you handle conflicts?</p>
+            <input type="radio" name="question3" value="option1" required>Option 1<br>
+            <input type="radio" name="question3" value="option2">Option 2<br>
+            <input type="radio" name="question3" value="option3">Option 3<br>
+        </fieldset>
+
+        <div class="controls">
+            <button>prev</button>
+            <button>next</button>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        const form = document.getElementById("questionnaireForm");
+        const fields = document.querySelectorAll("fieldset")
+        for (let i = 0; i < fields.length; i++) {
+            fields[i].style.display = "none";
+        }
+
+        let fieldIndex = 0;
+
+        function showField(n) {
+            fields[n].style.display = "block";
+        }
+
+        fields.forEach(function (field) {
+            const fieldInputs = field.querySelectorAll("input");
+        })
+
+        showField(fieldIndex);
+    </script>
+</body>
+</html>

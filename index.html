@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Questionnaire</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="currentQuestionIndex < questions.length">
+
+            <div v-for="(question, index) in questions" :key="question.name">
+                <h2>{{ question.text }}</h2>
+
+                <ul>
+                    <li v-for="(item, ind) in question.options" :key="item">
+                        <label>
+                            {{ item }} 
+                            <input type="radio" :value="item" :name="question.name" v-model="question.selectedOption" @click=" selectOption(index, item), testing(index, item)">
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- <ul>
+                <li v-for="(option, index) in questions[currentQuestionIndex].options" :key="index">
+                    <label>
+                        <input type="radio" :value="option" v-model="questions[currentQuestionIndex].selectedOption"
+                            @change="selectOption(index)" />
+                        {{ option }}
+                    </label>
+                </li>
+            </ul> -->
+            
+            <button @click="nextQuestion">Next</button>
+        </div>
+        <div v-else>
+            <h2>Thank you for completing the questionnaire!</h2>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
